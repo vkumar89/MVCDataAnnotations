@@ -1,0 +1,65 @@
+﻿@model MVCDataAnnotations.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddUser</title>
+    @*<script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>*@
+
+    <script src="~/Scripts/jquery-3.6.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        span {
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @{
+            using (Html.BeginForm("DisplayUser", "User"))
+            {
+                <div>@Html.ValidationSummary("", new { @class = "alert alert-danger" })</div>
+                <div>
+                    @Html.LabelFor(U => U.Name)
+                    @Html.EditorFor(U => U.Name)
+                    @Html.ValidationMessageFor(U => U.Name)
+                </div>
+
+                <div>
+                    @Html.LabelFor(U => U.Email)
+                    @Html.EditorFor(U => U.Email)
+                    @Html.ValidationMessageFor(U => U.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(U => U.Password)
+                    @Html.EditorFor(U => U.Password)
+                    @Html.ValidationMessageFor(U => U.Password)
+                </div>
+                <div>
+                    @Html.LabelFor(U => U.ConfirmPassword)
+                    @Html.EditorFor(U => U.ConfirmPassword)
+                    @Html.ValidationMessageFor(U => U.ConfirmPassword)
+                </div>
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                    <input type="reset" value="reset" class="btn btn-danger" />
+                </div>
+
+            }
+        }
+
+    </div>
+</body>
+</html>
